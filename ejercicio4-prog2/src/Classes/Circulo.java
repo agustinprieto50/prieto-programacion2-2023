@@ -36,6 +36,7 @@ public class Circulo implements FiguraGeometrica{
     }
 
     public void setRadio(Integer radio) {
+
         if (radio < 0){
             throw new IllegalArgumentException("El parametro no puede ser negativo");
         }
