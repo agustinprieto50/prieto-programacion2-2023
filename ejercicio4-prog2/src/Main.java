@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
 
         List <FiguraGeometrica> listaDeFiguras = new ArrayList<>();
-        Circulo circulo1 = new Circulo(2, 4, 6);
+        Circulo circulo1 = new Circulo(2, 4, -6);
         Circulo circulo2 = new Circulo(6, 2, -3);
         Triangulo triangulo1 = new Triangulo(-12, 1, 1);
         Triangulo triangulo2 = new Triangulo(3.5, 5, 2);

@@ -11,25 +11,35 @@ public class Cuadrado implements FiguraGeometrica{
     }
 
     public void setLargoLado(Integer largoLado) {
-        if (largoLado < 0){
-            throw new IllegalArgumentException("El parametro no puede ser negativo");
+        try {
+            if (largoLado < 0) {
+                throw new IllegalArgumentException("El parametro no puede ser negativo");
+            }
+            this.largoLado = largoLado;
         }
-        this.largoLado = largoLado;
+        catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     public Cuadrado(Integer largoLado, Integer x, Integer y) {
-        if (largoLado < 0){
-            throw new IllegalArgumentException("El parametro no puede ser negativo");
+        try {
+            if (largoLado < 0) {
+                throw new IllegalArgumentException("El parametro no puede ser negativo");
+            }
+            if (x < 0) {
+                throw new IllegalArgumentException("El parametro no puede ser negativo");
+            }
+            if (y < 0) {
+                throw new IllegalArgumentException("El parametro no puede ser negativo");
+            }
+            this.largoLado = largoLado;
+            this.x = x;
+            this.y = y;
         }
-        if (x < 0){
-            throw new IllegalArgumentException("El parametro no puede ser negativo");
+        catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
         }
-        if (y < 0){
-            throw new IllegalArgumentException("El parametro no puede ser negativo");
-        }
-        this.largoLado = largoLado;
-        this.x = x;
-        this.y = y;
     }
 
     @Override
@@ -52,10 +62,15 @@ public class Cuadrado implements FiguraGeometrica{
     }
 
     public void setX(Integer x) {
-        if (x < 0){
-            throw new IllegalArgumentException("El parametro no puede ser negativo");
+        try {
+            if (x < 0) {
+                throw new IllegalArgumentException("El parametro no puede ser negativo");
+            }
+            this.x = x;
         }
-        this.x = x;
+        catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     public Integer getY() {
@@ -63,9 +78,14 @@ public class Cuadrado implements FiguraGeometrica{
     }
 
     public void setY(Integer y) {
-        if (y < 0){
-            throw new IllegalArgumentException("El parametro no puede ser negativo");
+        try {
+            if (y < 0) {
+                throw new IllegalArgumentException("El parametro no puede ser negativo");
+            }
+            this.y = y;
         }
-        this.y = y;
+        catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
     }
 }
