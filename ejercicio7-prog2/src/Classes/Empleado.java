@@ -1,4 +1,5 @@
 package Classes;
+import java.util.Objects;
 import java.util.regex.*;
 
 public class Empleado {
@@ -8,10 +9,27 @@ public class Empleado {
     private Integer aniosTrabajados;
 
     public Empleado(String nombre, String apellido, Integer legajo, Integer aniosTrabajados) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.legajo = legajo;
-        this.aniosTrabajados = aniosTrabajados;
+        try{
+            if (nombre.equals("") | apellido.equals("") | legajo == null | aniosTrabajados == null ){
+                throw new IllegalArgumentException("Alguno de los argumentos esta vacio");
+            }
+            if (aniosTrabajados < 0) {
+                throw new IllegalArgumentException("El param de aniosTrabajdos no puede ser negativo");
+            }
+
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.legajo = legajo;
+            this.aniosTrabajados = Integer.parseInt(String.valueOf(aniosTrabajados));
+
+        }
+        catch (NumberFormatException e) {
+            System.out.println("Error: El parametro de aniosTrabajados debe ser un entero");
+        }
+        catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
+
     }
 
 
@@ -62,12 +80,20 @@ public class Empleado {
 
             String atributo = matcher.group(1).toLowerCase();
             String value = matcher.group(2);
-            switch (atributo) {
-                case "legajo" -> legajo = Integer.parseInt(value);
-                case "aniostrabajados" -> aniosTrabajados = Integer.parseInt(value);
-                case "nombre" -> nombre = value;
-                case "apellido" -> apellido = value;
+            try {
+
+                switch (atributo) {
+                    case "legajo" -> legajo = Integer.parseInt(value);
+
+
+                    case "aniostrabajados" -> aniosTrabajados = Integer.parseInt(value);
+                    case "nombre" -> nombre = value;
+                    case "apellido" -> apellido = value;
+                }
             }
+            catch (NumberFormatException e){
+                    System.out.println("AniosTrabajados No es un entero"+e.getMessage());
+                }
 
         }
         return new Empleado(nombre, apellido, legajo, aniosTrabajados);
